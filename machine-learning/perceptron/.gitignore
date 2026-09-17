@@ -1,0 +1,3 @@
+.venv/
+mnist_data/
+__pycache__/
