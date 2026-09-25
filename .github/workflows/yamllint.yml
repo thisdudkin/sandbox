@@ -1,4 +1,4 @@
-name: YAML Lint
+name: yamllint
 
 on:
   pull_request:
@@ -6,20 +6,13 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-
 jobs:
-  lint:
-    name: Lint YAML files
-    runs-on: ubuntu-latest
-
+  yamllint:
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
     steps:
-      - name: Check out repository
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803  # v6
-
-      - name: Run yamllint
-        uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c  # v3
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
         with:
           file_or_dir: .
           format: github
