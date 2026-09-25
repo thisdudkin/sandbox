@@ -1,9 +1,8 @@
 name: xmllint
-'on':
-  push:
-    branches:
-      - main
+
+on:
   pull_request:
+  push:
     branches:
       - main
 
@@ -12,7 +11,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
       - uses: delb-xml/xmllint-action@00e573989faa2a44d40c255c84a47873c6ef626d
         with:
           root_folder: .

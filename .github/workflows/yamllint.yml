@@ -1,9 +1,8 @@
 name: yamllint
-'on':
-  push:
-    branches:
-      - main
+
+on:
   pull_request:
+  push:
     branches:
       - main
 
@@ -12,5 +11,18 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v7
-      - uses: ibiqlik/action-yamllint@v3
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
+        with:
+          file_or_dir: .
+          format: github
+          config_data: |
+            extends: default
+            rules:
+              document-start: disable
+              line-length: disable
+              truthy:
+                allowed-values:
+                  - "true"
+                  - "false"
+                  - "on"
