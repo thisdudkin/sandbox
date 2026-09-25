@@ -13,4 +13,4 @@ Something...
 
 ### Issue
 
-- [ID](URL): Name
+Closes #123
